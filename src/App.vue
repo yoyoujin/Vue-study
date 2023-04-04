@@ -1,13 +1,15 @@
 <script setup>
 import { ref } from 'vue'
 
-const count = ref(0)
-const increment = () => {
-  count.value++
+const awesome = ref(true)
+
+function toggle() {
+  awesome.value = !awesome.value
 }
 </script>
 
 <template>
-  <!-- 이 버튼이 작동하도록 만들어 봅시다 -->
-  <button @click="increment">숫자 세기: {{ count }}</button>
+  <button @click="toggle">토글 버튼</button>
+  <h1 v-if="awesome">Vue는 굉장해! 엄청나!</h1>
+  <h1 v-else>오 안돼 😢</h1>
 </template>
