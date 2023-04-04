@@ -1,16 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 
-const titleClass = ref('title')
+const count = ref(0)
+const increment = () => {
+  count.value++
+}
 </script>
 
 <template>
-  <h1 :class="titleClass">빨간색으로 만들어 보세요</h1>
-  <!-- 여기에 동적 클래스 바인딩 추가 -->
+  <!-- 이 버튼이 작동하도록 만들어 봅시다 -->
+  <button @click="increment">숫자 세기: {{ count }}</button>
 </template>
-
-<style>
-.title {
-  color: red;
-}
-</style>
