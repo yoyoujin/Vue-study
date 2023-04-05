@@ -1,15 +1,35 @@
 <script setup>
 import { ref } from 'vue'
 
-const awesome = ref(true)
+// 각 todo에 고유한 id 부여
+let id = 0
 
-function toggle() {
-  awesome.value = !awesome.value
+const newTodo = ref('')
+const todos = ref([
+  { id: id++, text: 'HTML 배우기' },
+  { id: id++, text: 'JavaScript 배우기' },
+  { id: id++, text: 'Vue 배우기' }
+])
+
+function addTodo() {
+  todos.value.push({ id: id++, text: newTodo.value })
+  newTodo.value = ''
+}
+
+function removeTodo(todo) {
+  todos.value = todos.value.filter((t) => t !== todo)
 }
 </script>
 
 <template>
-  <button @click="toggle">토글 버튼</button>
-  <h1 v-if="awesome">Vue는 굉장해! 엄청나!</h1>
-  <h1 v-else>오 안돼 😢</h1>
+  <form @submit.prevent="addTodo">
+    <input v-model="newTodo" :key="todos.id" />
+    <button>할 일 추가</button>
+  </form>
+  <ul>
+    <li v-for="todo in todos" :key="todo.in">
+      {{ todo.text }}
+      <button @click="removeTodo(todo)">X</button>
+    </li>
+  </ul>
 </template>
