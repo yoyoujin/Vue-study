@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+// import App from './App.vue'
+import FormBinding from './FromBinding.vue'
 
 import './assets/main.css'
 
-createApp(App).mount('#app')
+createApp(FormBinding).mount('#app')
